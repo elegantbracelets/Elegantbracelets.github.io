@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Bracelets | Special Discounts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f7fe;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #7f53ac 0%, #647dee 100%);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        nav {
+            background-color: #ffffff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #7f53ac;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #7f53ac;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .hero h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #7f53ac;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #666;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .discount-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: pulse 2s infinite;
+            box-shadow: 0 4px 8px rgba(255,107,107,0.3);
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 2.5rem 0;
+            color: #7f53ac;
+            font-size: 1.8rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #7f53ac 0%, #647dee 100%);
+            margin: 10px auto 0;
+            border-radius: 3px;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .product-img {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1.3rem;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+        }
+        
+        .discounted-price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+        
+        .buy-btn {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #7f53ac 0%, #647dee 100%);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .buy-btn:hover {
+            background: linear-gradient(135deg, #6e48a3 0%, #5a71ec 100%);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Contact Page Styles */
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 3rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .contact-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-info h3 {
+            color: #7f53ac;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .contact-detail {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            color: #7f53ac;
+            font-size: 1.5rem;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+        
+        .contact-detail p {
+            color: #555;
+            line-height: 1.4;
+        }
+        
+        .contact-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-form h3 {
+            color: #7f53ac;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #7f53ac;
+        }
+        
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #7f53ac 0%, #647dee 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 0.5rem;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #6e48a3 0%, #5a71ec 100%);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: linear-gradient(135deg, #333 0%, #222 100%);
+            color: white;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: #7f53ac;
+        }
+        
+        .footer-column p {
+            color: #bbb;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+            display: block;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .footer-links a::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #7f53ac;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #7f53ac;
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer-bottom p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .products {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+            }
+            
+            .nav-links li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Elegant Bracelets</h1>
+            <p>Stylish accessories for every occasion</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <section id="home" class="hero">
+            <h2>Exclusive Collection of Handcrafted Bracelets</h2>
+            <p>Discover our unique selection of bracelets made with premium materials and designed with care. Our pieces blend traditional craftsmanship with modern design to create timeless accessories for any outfit.</p>
+            <div class="discount-badge">SPECIAL OFFER: 45% OFF!</div>
+        </section>
+        
+        <h2 id="products" class="section-title">Our Collection</h2>
+        <section class="products">
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('imgs/copper.jpg')"></div>
+                <div class="product-info">
+                    <h3>Bohemian String Bracelet</h3>
+                    <p>Handmade colorful string bracelet with wooden beads, perfect for casual wear.</p>
+                    <div class="price-row">
+                        <span class="original-price">UGX9000</span>
+                        <span class="discounted-price">UGX6000</span>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct('Bohemian String Bracelet', 674, '/api/placeholder/400/320')">Buy Now</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('imgs/frdship.jpg')"></div>
+                <div class="product-info">
+                    <h3>Red And Black</h3>
+                    <p>A Pair Fashion New game console handle couple bracelet magnet stone charm bracelet men and women Valentine's Day gift</p>
+                    <div class="price-row">
+                        <span class="original-price">UGX 7500</span>
+                        <span class="discounted-price">UGX 6000</span>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct('Silver Charm Bracelet', 1124, '/api/placeholder/400/320')">Buy Now</button>
+                </div>
+            </div>
+
+             <div class="product-card">
+                <div class="product-img" style="background-image: url('imgs/blackfrd.jpg')"></div>
+                <div class="product-info">
+                    <h3>Black</h3>
+                    <p>6pcs Trend Infinity 8 Bowknot Heart Key Charm Chain Bracelets & Bangles Minimalist Women Tiny Set Party Jewelry.</p>
+                    <div class="price-row">
+                        <span class="original-price">UGX8000</span>
+                        <span class="discounted-price">UGX6500</span>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct('Beaded Friendship Bracelet', 524, '/api/placeholder/400/320')">Buy Now</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('imgs/red.jpg')"></div>
+                <div class="product-info">
+                    <h3>Style 21 Red</h3>
+                    <p>2pcs/set Red Black Life Tree Thread Bracelet Men Handwoven Braided Adjustable Tibetan Buddhist Bracelet Women Lover Jewelry Gift</p>
+                    <div class="price-row">
+                        <span class="original-price">UGX12500</span>
+                        <span class="discounted-price">UGX7500</span>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct('Gemstone Healing Bracelet', 974, '/api/placeholder/400/320')">Buy Now</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('imgs/black.jpg')"></div>
+                <div class="product-info">
+                    <h3>Style 21 Black</h3>
+                    <p>2pcs/set Red Black Life Tree Thread Bracelet Men Handwoven Braided Adjustable Tibetan Buddhist Bracelet Women Lover Jewelry Gift</p>
+                    <div class="price-row">
+                        <span class="original-price">UGX13000</span>
+                        <span class="discounted-price">UGX8000</span>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct('Gold-Plated Bangle', 1499, '/api/placeholder/400/320')">Buy Now</button>
+                </div>
+            </div>
+
+            
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('imgs/leather.jpg')"></div>
+                <div class="product-info">
+                    <h3>Leather Wrap Bracelet</h3>
+                    <p>Stylish genuine leather wrap bracelet with metal accents, adjustable size.</p>
+                    <div class="price-row">
+                        <span class="original-price">UGX9500</span>
+                        <span class="discounted-price">UGX7000</span>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct('Leather Wrap Bracelet', 899, '/api/placeholder/400/320')">Buy Now</button>
+                </div>
+            </div>
+            
+            
+             <div class="product-card">
+                <div class="product-img" style="background-image: url('imgs/many.jpg')"></div>
+                <div class="product-info">
+                    <h3>Metal Color: SL005</h3>
+                    <p>6pcs Trend Infinity 8 Bowknot Heart Key Charm Chain Bracelets & Bangles Minimalist Women Tiny Set Party Jewelry.</p>
+                    <div class="price-row">
+                        <span class="original-price">UGX15000</span>
+                        <span class="discounted-price">UGX12500</span>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct('Beaded Friendship Bracelet', 524, '/api/placeholder/400/320')">Buy Now</button>
+                </div>
+            </div>
+
+            
+
+             <div class="product-card">
+                <div class="product-img" style="background-image: url('imgs/glow.jpg')"></div>
+                <div class="product-info">
+                    <h3>Glowing Bracelate</h3>
+                    <p>2pcs Trend Infinity 8 Bowknot Heart Key Charm Chain Bracelets with glowing effects at night</p>
+                    <div class="price-row">
+                        <span class="original-price">UGX7000</span>
+                        <span class="discounted-price">UGX4500</span>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct('Beaded Friendship Bracelet', 524, '/api/placeholder/400/320')">Buy Now</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-img" style="background-image: url('imgs/glow2.jpg')"></div>
+                <div class="product-info">
+                    <h3>Glowing</h3>
+                    <p>2pcs Trend Infinity 8 Bowknot Heart Key Charm Chain Bracelets with glowing effects at night</p>
+                    <div class="price-row">
+                        <span class="original-price">UGX7000</span>
+                        <span class="discounted-price">UGX4500</span>
+                    </div>
+                    <button class="buy-btn" onclick="buyProduct('Beaded Friendship Bracelet', 524, '/api/placeholder/400/320')">Buy Now</button>
+                </div>
+            </div>
+        </section>
+        
+        <h2 id="contact" class="section-title">Contact Us</h2>
+        <section class="contact-section">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <div class="contact-detail">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <p>123 Fashion Street, Kampala District<br>New Fashion, Uganda 00000</p>
+                </div>
+                
+                <div class="contact-detail">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <p>+256706474445</p>
+                </div>
+                
+                <div class="contact-detail">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <p>qualitybracelates.elbra@gmail.com</p>
+                </div>
+                
+                <div class="contact-detail">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <p>Monday - Saturday: 06:00 AM - 8:00 PM<br>Sunday: 06:00 AM - 6:00 PM</p>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <!--a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a-->
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+                    </div>
+                    
+                    <!--div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea class="form-control" id="message" placeholder="Write your message here..."></textarea>
+                    </div>
+                    
+                    <button type="button" class="submit-btn" onclick="submitForm()">Send Message</button-->
+                </form>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>Elegant Bracelets is a premium jewelry brand specializing in handcrafted bracelets. We combine traditional craftsmanship with modern designs to create timeless pieces that enhance any style.</p>
+                    <p>Our mission is to provide high-quality, affordable accessories that help you express your unique personality.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <!--a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a-->
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <!--li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li-->
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Customer Support</h3>
+                    <ul class="footer-links">
+                        <!--li><a href="#">FAQ</a></li-->
+                        <li><a href="#">Delivering Policy</a></li>
+                        <!--li><a href="#">Returns & Exchanges</a></li-->
+                        <li><a href="#">Payment Methods</a></li>
+                        <!--li><a href="#">Size Guide</a></li-->
+                        <li><a href="https://wa.me/+256706474445?text=Hello may i get more info about care instructions">Care Instructions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter to receive updates on new collections, special offers, and exclusive discounts.</p>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your email address">
+                    </div>
+                    <button class="submit-btn">Subscribe</button>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Elegant Bracelets. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        function buyProduct(productName, price, imageUrl) {
+            // Prepare the WhatsApp message with product details
+            const message = `Hi! I'd like to purchase the ${productName} for ₹${price}. Please provide more details for payment and delivery.`;
+            
+            // Format the WhatsApp URL with your number and the message
+            const whatsappUrl = `https://wa.me/+256706474445?text=${encodeURIComponent(message)}`;
+            
+            // Open WhatsApp in a new tab
+            window.open(whatsappUrl, '_blank');
+        }
+        
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !email || !phone || !message) {
+                alert('Please fill all fields');
+                return;
+            }
+            
+            // In a real implementation, you would send this data to your server
+            alert('Thank you for your message! We will get back to you soon.');
+            
+            // Clear the form
+            document.getElementById('contactForm').reset();
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
